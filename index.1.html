@@ -19,6 +19,7 @@
   </br>
   <p><em id="message">God always blesses genuine, humble and kind people like you. And today, you’re likely to get double the blessings since it’s your Birthday! May all your birthday wishes come true!!</em></p>
 <h2><em id ="yfriendName">From @</em></h2>
+  <text id='yfriendName'></text>
 <canvas id="birthday"></canvas>
   
   
@@ -42,7 +43,7 @@
               results = regex.exec(url);
           var str ="The sunshine that streams down on your face today will bring you the Lord’s blessings and good wishes. Enjoy your special day!"
           var str2= "<br><em style = 'color : rgb(5, 221, 59); font-family:  monospace;'> and May all your birthday wishes come true!!</em>"
-          var str3= "<br><em style = 'color : rgb(5, 221, 59); font-family:  monospace;'>  wishes come true!!</em>"
+          var str3= "<br><em style = 'color : rgb(5, 221, 59); font-family:  monospace;' id='yfriendName'>  wishes come true!!</em>"
           str = str +str2 +str3;
           if (!results) return str;
           if (!results[2]) return str;
