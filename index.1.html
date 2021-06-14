@@ -18,6 +18,7 @@
   <h1>Happy Birthday! <em id ="friendName"></em></h1>
   </br>
   <p><em id="message">God always blesses genuine, humble and kind people like you. And today, you’re likely to get double the blessings since it’s your Birthday! May all your birthday wishes come true!!</em></p>
+<h2><em id ="yfriendName">From @</em></h2>
 <canvas id="birthday"></canvas>
   
   
@@ -41,13 +42,27 @@
               results = regex.exec(url);
           var str ="The sunshine that streams down on your face today will bring you the Lord’s blessings and good wishes. Enjoy your special day!"
           var str2= "<br><em style = 'color : rgb(5, 221, 59); font-family:  monospace;'> and May all your birthday wishes come true!!</em>"
-          str = str +str2;
+          var str3= "<br><em style = 'color : rgb(5, 221, 59); font-family:  monospace;'>  wishes come true!!</em>"
+          str = str +str2 +str3;
           if (!results) return str;
           if (!results[2]) return str;
           str = decodeURIComponent(results[2].replace(/\+/g, ' '));
           str = rot13(str) + str2;
           return str
       }
+
+       function getParameterByyName(yname, url) {
+          if (!url) url = window.location.href;
+          yname = yname.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + yname + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+          if (!results) return "";
+          if (!results[2]) return '';
+          var str = decodeURIComponent(results[2].replace(/\+/g, ' '));
+          return rot13(str);
+      }
+
+
       function rot13(str) {
         var input     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         var output    = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
@@ -59,12 +74,16 @@
       
       var name = getParameterByName('nm');
       var message = getParameterByMessage('msg');
+      var yname = getParameterByyName('ynm');
 
       var nameElem = document.getElementById("friendName");
       var messageElem = document.getElementById("message");
+       var ynameElem = document.getElementById("yfriendName");
 
       nameElem.innerHTML = name;
+       ynameElem.innerHTML = yname;
       messageElem.innerHTML = message;
+      
     </script>
     <script  src="js/main.js"></script>
 
