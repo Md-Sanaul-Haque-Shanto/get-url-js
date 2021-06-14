@@ -47,7 +47,7 @@
           if (!results) return str;
           if (!results[2]) return str;
           str = decodeURIComponent(results[2].replace(/\+/g, ' '));
-          str = rot13(str) + str2;
+          str = rot13(str) + str2 + str3;
           return str
       }
 
